@@ -5,7 +5,6 @@ using CardService.Api.Localization;
 using CardService.Application.Interfaces;
 using CardService.Application.Validators;
 using FluentValidation;
-using MediatR;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
@@ -17,7 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Configure localization using JSON files
-builder.Services.AddSingleton<IStringLocalizer, JsonStringLocalizer>();
+builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+builder.Services.AddScoped<IStringLocalizer, JsonStringLocalizer>();
 
 // Configure localization
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");

@@ -4,10 +4,10 @@ namespace CardService.Api.Models
 {
     public class CardRequest
     {
-        [Required(ErrorMessage = "UserId is required.")]
-        public required string UserId { get; set; }
+        [Required(ErrorMessage = "UserIdRequired")]
+        public string UserId { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "CardNumber is required.")]
-        public required string CardNumber { get; set; }
+        [Required(ErrorMessage = "CardNumberRequired")]
+        public string CardNumber { get; set; } = string.Empty;
     }
 }

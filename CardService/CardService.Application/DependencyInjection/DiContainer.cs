@@ -2,7 +2,6 @@ using CardService.Application.Interfaces;
 using CardService.Api.Mappings;
 using CardService.Application.Validators;
 using FluentValidation;
-using MediatR;
 
 namespace CardService.Application
 {

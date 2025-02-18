@@ -5,7 +5,7 @@ namespace CardService.Application.Queries
 {
     public class GetCardDetailsQuery : IRequest<CardDetailsDto>
     {
-        public string UserId { get; set; }
-        public string CardNumber { get; set; }
+        public required string UserId { get; set; }
+        public required string CardNumber { get; set; }
     }
 }

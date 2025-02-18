@@ -10,17 +10,14 @@ namespace CardService.Api.Localization
 
         public JsonStringLocalizer()
         {
+            _localizationData = new Dictionary<string, string>();
             var culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             var jsonFile = $"CardService.Api/Resources/localization.{culture}.json";
             
             if (File.Exists(jsonFile))
             {
                 var jsonData = File.ReadAllText(jsonFile);
-                _localizationData = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonData);
-            }
-            else
-            {
-                _localizationData = new Dictionary<string, string>();
+                _localizationData = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonData) ?? new();
             }
         }
 
@@ -28,11 +25,9 @@ namespace CardService.Api.Localization
         {
             get
             {
-                if (_localizationData.TryGetValue(name, out var value))
-                {
-                    return new LocalizedString(name, value);
-                }
-                return new LocalizedString(name, name, true);
+                return _localizationData.TryGetValue(name, out var value)
+                    ? new LocalizedString(name, value)
+                    : new LocalizedString(name, name, true);
             }
         }
 
