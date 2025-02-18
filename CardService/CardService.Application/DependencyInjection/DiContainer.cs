@@ -1,5 +1,8 @@
 using CardService.Application.Interfaces;
 using CardService.Api.Mappings;
+using CardService.Application.Validators;
+using FluentValidation;
+using MediatR;
 
 namespace CardService.Application
 {
@@ -9,6 +12,7 @@ namespace CardService.Application
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(ICardService).Assembly));
             services.AddAutoMapper(typeof(CardMappingProfile));
+            services.AddValidatorsFromAssemblyContaining<GetCardDetailsQueryValidator>();
             return services;
         }
     }

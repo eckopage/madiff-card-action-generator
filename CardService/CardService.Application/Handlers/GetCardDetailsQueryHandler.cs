@@ -4,8 +4,6 @@ using CardService.Application.Models;
 using CardService.Application.Queries;
 using FluentValidation;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace CardService.Application.Handlers
 {
@@ -35,7 +33,7 @@ namespace CardService.Application.Handlers
             {
                 throw new KeyNotFoundException("Card not found");
             }
-            
+
             return _mapper.Map<CardDetailsDto>(card);
         }
     }
