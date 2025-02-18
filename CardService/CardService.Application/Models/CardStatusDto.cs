@@ -2,6 +2,6 @@ namespace CardService.Application.Models
 {
     public class CardStatusDto
     {
-        public string Status { get; set; }
+        public required string Status { get; set; }
     }
 }

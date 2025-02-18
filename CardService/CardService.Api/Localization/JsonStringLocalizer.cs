@@ -1,7 +1,5 @@
 using Microsoft.Extensions.Localization;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Text.Json;
 
 namespace CardService.Api.Localization

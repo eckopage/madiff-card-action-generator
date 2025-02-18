@@ -8,17 +8,17 @@ namespace CardService.Application.Models
         /*
         * The unique identifier of the card.
         */
-        public string CardNumber { get; set; }
+        public required string CardNumber { get; set; }
 
         /*
         * The name of the card.
         */
-        public string CardType { get; set; }
+        public required string CardType { get; set; }
 
         /*
         * The description of the card.
         */
-        public string CardStatus { get; set; }
+        public required string CardStatus { get; set; }
 
         /*
         * The card's pin has set. 
