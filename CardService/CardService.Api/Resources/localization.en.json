@@ -1,0 +1,6 @@
+{
+    "UserIdRequired": "UserId is required.",
+    "CardNumberRequired": "CardNumber is required.",
+    "CardNotFound": "Card not found.",
+    "InternalServerError": "An unexpected error occurred. Please try again later."
+}

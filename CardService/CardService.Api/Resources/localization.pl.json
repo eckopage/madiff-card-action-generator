@@ -1,0 +1,6 @@
+{
+    "UserIdRequired": "Identyfikator użytkownika jest wymagany.",
+    "CardNumberRequired": "Numer karty jest wymagany.",
+    "CardNotFound": "Karta nie została znaleziona.",
+    "InternalServerError": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później."
+}
