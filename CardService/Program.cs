@@ -15,6 +15,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+// Configure Swagger for OpenAPI documentation
+builder.Services.AddSwaggerGen(c =>
+{
+    if (!c.SwaggerGeneratorOptions.SwaggerDocs.ContainsKey("v1")) // Ensure unique SwaggerDoc
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "Card Service API",
+            Version = "v1",
+            Description = "API for managing card details and retrieving allowed actions."
+        });
+    }
+    c.EnableAnnotations();
+});
+
 // Configure localization using JSON files
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 builder.Services.AddScoped<IStringLocalizer, JsonStringLocalizer>();
@@ -35,13 +50,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<GetCardDetailsQueryValidato
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
-// Configure Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CardService API", Version = "v1" });
-});
-
 var app = builder.Build();
 
 // Configure localization middleware
@@ -58,7 +66,7 @@ app.UseRequestLocalization(localizationOptions);
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Card Service API v1"));
 }
 
 app.UseAuthorization();
