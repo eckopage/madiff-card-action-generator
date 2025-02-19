@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": ".NET Debug Test",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/tests/CardService.Tests/bin/Debug/net8.0/CardService.Tests.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "console": "internalConsole",
+        "stopAtEntry": false,
+        "justMyCode": true
+      }
+    ]
+  }
+  

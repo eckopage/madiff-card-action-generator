@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cardservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cardservice
+  template:
+    metadata:
+      labels:
+        app: cardservice
+    spec:
+      containers:
+      - name: cardservice
+        image: cardservice:latest
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cardservice
+spec:
+  selector:
+    app: cardservice
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
